@@ -1,5 +1,6 @@
 <?php
 include 'connection.php';
+
 $conn = OpenCon();
 
 // SQL query to select data from database
@@ -22,7 +23,6 @@ $rows=$result->fetch_assoc()
     <link href='css/style1.css?v=1.0' rel=stylesheet media=all>
     <link href='images/16.ico' rel="shortcut icon" type=image/x-icon>
     <link rel="stylesheet" href="./css/teer.css">
-    
 </head>
 
 <body>
@@ -47,27 +47,27 @@ $rows=$result->fetch_assoc()
         <div class="scores">
             <div class="score">
                 <div class="score-title">
-                <p>1st Round (04:20 PM)</p>
+                <p>1st Round (04:15 PM)</p>
                 </div>
 
                 <div class="score-card">
-                    <p>20</p>
+                    <p><?php echo $rows['F/R'] ?></p>
                 </div>
             </div>
             <div class="timers">
                 <div class="timer">
-                    <p>1st Round Result Time</p> <p><b class="timer-time">(04:20 PM)</b></p>
+                    <p>1st Round Result Time</p> <p><b class="timer-time" id="fr_timer">(04:20 PM)</b></p>
                 </div>
                 <div class="timer">
-                    <p>1st Round Result Time </p> <p><b class="timer-time">(04:20 PM)</b></p>
+                    <p>2nd Round Result Time </p> <p><b class="timer-time" id="sr_timer">(04:20 PM)</b></p>
                 </div>
             </div>
             <div class="score">
             <div class="score-title">
-                <p>2nd Round (04:20 PM)</p>
+                <p>2nd Round (05:15 PM)</p>
             </div>
             <div class="score-card">
-                    <p>20</p>
+                <p><?php echo $rows['S/R'] ?></p>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ $rows=$result->fetch_assoc()
     
 
 <script src="js/my_script.js"></script>
-
+<script src="js/fr_countdown.js"></script>
 </body>
 
 </html>

@@ -30,3 +30,5 @@
     date_with_day += ", " + time;
     document.getElementById('date').innerHTML = date_with_day;
     
+
+
