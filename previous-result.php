@@ -6,6 +6,7 @@
     <meta content="teer,BHUTAN,teer result,lottery result,previous results" name=keyword>
     <link href=css/style1.css rel=stylesheet media=all>
     <link href=images/16.ico rel="shortcut icon" type=image/x-icon>
+    <link rel="stylesheet" href="css/previous-result.css">
     
     <div class=header id=home>
         <div class=top-header><a href=index.php><img alt=Teer src=images/teer.jpg title=Teer></a></div>
@@ -40,7 +41,74 @@
                 </form>
             </div>
 
-        <!-- table here -->
+        <!-- table here --> 
+
+        <div>
+        
+
+        <div class="table">
+        
+        <div class="table-content">
+        <div class="round-result">2nd Round Result (04:20 PM)</div>
+        <div class="responsive-table">
+        
+        <section class="day-section-sunday">
+            <h2 class="day-content head">City</h2>
+            <p class="day-content recipe">Gonda</p>
+            <p class="day-content url">Lucknow</p>
+            <p class="day-content notes">Delhi</p>
+        </section>
+
+        <section class="day-section-monday">
+            <h2 class="day-content head">2nd Round</h2>
+            <p class="day-content recipe">Round Two</p>
+            <p class="day-content url">Round Two</p>
+            <p class="day-content notes">Round Two</p>
+        </section>
+
+        <section class="day-section-tuesday">
+            <h2 class="day-content head">House No.</h2>
+            <p class="day-content recipe">1211</p>
+            <p class="day-content url">3431</p>
+            <p class="day-content notes">1321</p>
+        </section>
+
+
+       
+    </div>
+        </div>
+        <div class="table-content">
+        <div class="round-result">2nd Round Result (04:20 PM)</div>
+        <div class="responsive-table">
+        
+        <section class="day-section-sunday">
+            <h2 class="day-content head">City</h2>
+            <p class="day-content recipe">Gonda</p>
+            <p class="day-content url">Lucknow</p>
+            <p class="day-content notes">Delhi</p>
+        </section>
+
+        <section class="day-section-monday">
+            <h2 class="day-content head">2nd Round</h2>
+            <p class="day-content recipe">Round Two</p>
+            <p class="day-content url">Round Two</p>
+            <p class="day-content notes">Round Two</p>
+        </section>
+
+        <section class="day-section-tuesday">
+            <h2 class="day-content head">House No.</h2>
+            <p class="day-content recipe">1211</p>
+            <p class="day-content url">3431</p>
+            <p class="day-content notes">1321</p>
+        </section>
+
+
+       
+    </div>
+        </div>
+        </div>
+        
+        <!-- End of .responsive-table -->
 
             <div class=container id=work1 style=background-color:#fff>
                 <div class=works>
