@@ -1,3 +1,36 @@
+<?php
+
+    require('connection.php');
+    $con = OpenCon();
+
+    session_start();
+    $set_cond = False;
+    // If form submitted, insert values into the database.
+if (isset($_POST['username'])){
+        // removes backslashes
+    $username = stripslashes($_REQUEST['username']);
+        //escapes special characters in a string
+    $username = mysqli_real_escape_string($con,$username);
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($con,$password);
+    //Checking is user existing in the database or not
+        $query = "SELECT * FROM `users` WHERE email='$username'
+    and password='".md5($password)."'";
+    $result = mysqli_query($con,$query) or die(mysql_error());
+    $rows = mysqli_num_rows($result);
+     
+    if($rows==1){
+        $_SESSION['username'] = $username;
+        // Redirect user to index.php
+        header("Location: admin.php");
+    }else{
+        $set_cond = True;
+    }
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,33 +47,11 @@
 
 <body>
     <?php
-        require('connection.php');
-        $con = OpenCon();
-
-        session_start();
-        // If form submitted, insert values into the database.
-        if (isset($_POST['username'])){
-            // removes backslashes
-        $username = stripslashes($_REQUEST['username']);
-            //escapes special characters in a string
-        $username = mysqli_real_escape_string($con,$username);
-        $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($con,$password);
-        //Checking is user existing in the database or not
-            $query = "SELECT * FROM `users` WHERE email='$username'
-        and password='".md5($password)."'";
-        $result = mysqli_query($con,$query) or die(mysql_error());
-        $rows = mysqli_num_rows($result);
-            if($rows==1){
-                $_SESSION['username'] = $username;
-                // Redirect user to index.php
-                header("Location: index.php");
-            }else{
+        if($set_cond){
             echo "<form>
-                <h3>Username/password is incorrect.</h3>
-                <br/>Click here to <a href='login.php'>Login</a></form>";
-            }
-        }else{
+        <h3>Username/password is incorrect.</h3>
+        <br/>Click here to <a href='login.php'>Login</a></form>";
+        }else{  
         ?>
 
 
@@ -61,6 +72,7 @@
                 <div class="line"></div>
             </div>
         </label>
+        <br>
         <button type="submit" value="Register">submit</button>
         
         <p style="padding-top: 10px;">Not registered yet? <a href='registration.php'>Register Here</a></p>

@@ -3,19 +3,21 @@ include 'connection.php';
 
 $conn = OpenCon();
 
-// SQL query to select data from database
-$sql = "SELECT * FROM bhutan_teer ORDER BY 'date' ASC ";
+$sql = "SELECT * FROM bhutan_teer ORDER BY id DESC LIMIT 1";
+$marqu = "SELECT * FROM marquee ORDER BY id DESC LIMIT 1";
 $result = $conn->query($sql);
-$conn->close(); 
+$result1 = $conn->query($marqu);
 
-$rows=$result->fetch_assoc()
+$rows=$result->fetch_assoc();
+$next_row=$result1->fetch_assoc();
+$conn->close(); 
 ?>
 
 <!doctype html>
 <html xmlns=http://www.w3.org/1999/xhtml xmlns:fb=http://ogp.me/ns/fb#>
 
 <head>
-    <title>Teer | Tir  | Teer Results Online: </title>
+    <title>Teer | Tir  | Lucky Teer Online: </title>
     <meta content="text/html" charset="utf-8" http-equiv=Content-Type>
     <meta content="We provide teer results online everyday" name=description>
     <meta content="teer,teer counter,teercounter,teer countar,tir,lottery result" name=keyword>
@@ -29,7 +31,7 @@ $rows=$result->fetch_assoc()
     <header class="header">
         <div class="header-content">
         <div class="logo">
-            <img src="./images/teer.jpg" alt="">
+            <img src="./images/Lucky-Teer-Logo.png" alt="">
         </div>
         <div class="date">
             <p id="date"></p>
@@ -37,13 +39,20 @@ $rows=$result->fetch_assoc()
         </div>
         <div class="news">
         <marquee behavior="" direction="">
-            <p>Running Admin News</p>
+            <p><?php echo $next_row['msg'] ?></p>
         </marquee>
     </div>
     </header>
 
     <section class="dream-numbers">
-        <h1>Today's Super Luck Teer Result</h1>
+        
+        <div class="btn-container">
+            <a href="common-numbers.php" class="btn blue">Common Numbers</a>
+            <a href="previous-result.php" class="btn blue">Previous Results</a>
+            <a href="dream-numbers.php" class="btn blue">Dream Numbers</a>
+        </div>
+        
+        <h1>Today's Super Lucky Teer Result</h1>
         <div class="scores">
             <div class="score">
                 <div class="score-title">
@@ -51,7 +60,7 @@ $rows=$result->fetch_assoc()
                 </div>
 
                 <div class="score-card">
-                    <p><?php echo $rows['F/R'] ?></p>
+                    <p>0<?php echo $rows['F/R'] ?></p>
                 </div>
             </div>
             <div class="timers">
@@ -86,18 +95,20 @@ $rows=$result->fetch_assoc()
                     <div class=works>
                         <div class="col-md-45 work-grid">
                             <div class=item1><a href=common-numbers.php><img alt="Teer Common Numbers"
-                                        src=images/teer-common-numbers.jpg title="Common Number"></a></div>
+                                        src=images/Common-Numbers.png title="Common Number"></a></div>
                         </div>
                         
+                        
                         <div class="col-md-45 work-grid">
-                            <div class=item1><a href=dream-numbers.php><img alt="Teer Dream Numbers"
-                                        src=images/teer-dream-numbers.jpg title="Dream Number"></a>
+                            <div class=item1><a href=previous-result.php><img alt="Teer Previous Results"
+                                        src=images/Previous-Result.png title="Previous Result"></a>
                                 <div class=caption style=display:none></div>
                             </div>
                         </div>
+
                         <div class="col-md-45 work-grid">
-                            <div class=item1><a href=previous-result.php><img alt="Teer Previous Results"
-                                        src=images/teer-previous-numbers.jpg title="Previous Result"></a>
+                            <div class=item1><a href=dream-numbers.php><img alt="Teer Previous Results"
+                                        src=images/Dream-Number.png title="Dream Number "></a>
                                 <div class=caption style=display:none></div>
                             </div>
                         </div>
@@ -109,11 +120,6 @@ $rows=$result->fetch_assoc()
 
 
 
-                
-                <div class=footer-left1><a href=termsofuse.php>Terms</a></div>
-                <div class=footer-center1><a href="#">&nbsp;
-                    </a></div>
-                <div class=footer-right1><a href=privacypolicy.php>Privacy Policy</a></div>
             </div>
         </div>
     </div>

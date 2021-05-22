@@ -54,7 +54,7 @@
 		<!----- start-header---->
 			<div id="home" class="header">
 					<div class="top-header">
-					<a href="index.php"><img src="images/teer.jpg" title ="Teer" Alt= "Teer"></a>
+					<a href="index.php"><img src="./images/Lucky-Teer-Logo.png" alt=""></a>
 				</div>
 			</div>
 			<div id="work" class="work" style="background-color:white;">													

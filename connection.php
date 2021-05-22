@@ -20,4 +20,3 @@ function CloseCon($conn)
  }
    
 ?>
-<!-- sM4qDTaBK8f!kp6 -->

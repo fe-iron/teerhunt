@@ -312,6 +312,55 @@ a.big-btn span:hover {
   font-size: 0.9em;
 }
 
+
+.btn {
+  padding: 1em 2.1em 1.1em;
+  border-radius: 3px;
+  margin: 8px 8px 8px 8px;
+  color: #fbdedb;
+  background-color: #fbdedb;
+  display: inline-block;
+  background: #e74c3c;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: .85em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  position: relative;
+}
+.btn:hover, .btn:focus {
+  opacity: 0.8;
+}
+.btn:active {
+  -webkit-transform: scale(0.80);
+  -moz-transform: scale(0.80);
+  -ms-transform: scale(0.80);
+  -o-transform: scale(0.80);
+  transform: scale(0.80);
+}
+
+.blue {
+  background-color: #7abedf;
+}
+
+.work-grid img{
+  max-width: 200px;
+}
+
+
+.btn-container{
+  display: flex;
+  width: max-content;
+  margin: 0 auto;
+}
 .head-one span {
   height: 1px;
   background: #303030;
@@ -330,7 +379,7 @@ a.big-btn span:hover {
 }
 
 .work-grid img {
-  width: 98%;
+  width: 80%;
   border: 1px solid #fff;
 }
 
@@ -752,3 +801,8 @@ marquee {
 }
 
 
+@media (max-width: 550px){
+  .btn-container{
+    flex-direction: column;
+  }
+}

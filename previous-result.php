@@ -1,5 +1,18 @@
-<!doctypehtml>
-    <title>Teer | BHUTAN | Teer Results Online |</title>
+<?php
+include 'connection.php';
+
+$conn = OpenCon();
+
+$sql = "SELECT * FROM house_entry WHERE round_first=1";
+$sql1 = "SELECT * FROM house_entry WHERE round_second=1";
+
+$result = $conn->query($sql);
+$result1 = $conn->query($sql1);
+
+$conn->close(); 
+?>
+<!doctype html>
+    <title>Teer | Super  | Lucky Teer Online: </title>
     <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1" name=viewport>
     <meta content="Check out previous results for BHUTAN teer at teerbhutan.com" name=description>
@@ -9,11 +22,19 @@
     <link rel="stylesheet" href="css/previous-result.css">
     
     <div class=header id=home>
-        <div class=top-header><a href=index.php><img alt=Teer src=images/teer.jpg title=Teer></a></div>
+        <div class=top-header><a href=index.php><img src="./images/Lucky-Teer-Logo.png" alt=""></a></div>
     </div>
-    <div class=work id=work style=background-color:#fff>
+
+    <div class="btn-container">
+            <a href="common-numbers.php" class="btn blue">Common Numbers</a>
+            <a href="previous-result.php" class="btn blue">Previous Results</a>
+            <a href="dream-numbers.php" class="btn blue">Dream Numbers</a>
+        </div>
+
+     <div class=work id=work style=background-color:#fff>
         <div class=container style=background-color:#fff>
-            <div class="head-one team-head text-center">
+            <h3 id="date" style="text-align: center;margin-bottom: 0.6em;">21-05-2021</h3>
+            <!-- <div class="head-one team-head text-center">
                 <h2>Previous Results</h2>
                 <p>
                 <form action="./previous-result.php" method=POST>
@@ -39,7 +60,7 @@
                         type=submit value=SUBMIT>
                     <p>
                 </form>
-            </div>
+            </div> -->
 
         <!-- table here --> 
 
@@ -49,57 +70,49 @@
         <div class="table">
         
         <div class="table-content">
-        <div class="round-result">2nd Round Result (04:20 PM)</div>
+        <div class="round-result">1<sup>st</sup> Round Result (04:15 PM)</div>
         <div class="responsive-table">
         
-        <section class="day-section-sunday">
-            <h2 class="day-content head">City</h2>
-            <p class="day-content recipe">Gonda</p>
-            <p class="day-content url">Lucknow</p>
-            <p class="day-content notes">Delhi</p>
-        </section>
+                <section class="day-section-sunday">
+                    <h2 class="day-content head">City</h2>
+                    <p class="day-content recipe">Gonda</p>
+                    
+                </section>
 
-        <section class="day-section-monday">
-            <h2 class="day-content head">2nd Round</h2>
-            <p class="day-content recipe">Round Two</p>
-            <p class="day-content url">Round Two</p>
-            <p class="day-content notes">Round Two</p>
-        </section>
+                <section class="day-section-monday">
+                    <h2 class="day-content head">1<sup>st</sup> Round</h2>
+                    <p class="day-content recipe">04</p>
+                    
+                </section>
 
-        <section class="day-section-tuesday">
-            <h2 class="day-content head">House No.</h2>
-            <p class="day-content recipe">1211</p>
-            <p class="day-content url">3431</p>
-            <p class="day-content notes">1321</p>
-        </section>
-
-
+                <section class="day-section-tuesday">
+                    <h2 class="day-content head">House No.</h2>
+                    <p class="day-content recipe">00-09</p>
+                    
+                </section>
        
-    </div>
+    </div> 
         </div>
         <div class="table-content">
-        <div class="round-result">2nd Round Result (04:20 PM)</div>
+        <div class="round-result">2<sup>nd</sup>  Round Result (05:15 PM)</div>
         <div class="responsive-table">
         
         <section class="day-section-sunday">
             <h2 class="day-content head">City</h2>
             <p class="day-content recipe">Gonda</p>
-            <p class="day-content url">Lucknow</p>
-            <p class="day-content notes">Delhi</p>
+            
         </section>
 
         <section class="day-section-monday">
-            <h2 class="day-content head">2nd Round</h2>
-            <p class="day-content recipe">Round Two</p>
-            <p class="day-content url">Round Two</p>
-            <p class="day-content notes">Round Two</p>
+            <h2 class="day-content head">2<sup>nd</sup> Round</h2>
+            <p class="day-content recipe">13</p>
+            
         </section>
 
         <section class="day-section-tuesday">
             <h2 class="day-content head">House No.</h2>
-            <p class="day-content recipe">1211</p>
-            <p class="day-content url">3431</p>
-            <p class="day-content notes">1321</p>
+            <p class="day-content recipe">10-19</p>
+            
         </section>
 
 
@@ -110,38 +123,47 @@
         
         <!-- End of .responsive-table -->
 
-            <div class=container id=work1 style=background-color:#fff>
-                <div class=works>
-                    <div id=whatever>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=index.php><img alt="Online Teer Result" src=images/teer-result.jpg
-                                        title=Home></a></div>
-                        </div>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=#><img alt="TeerCounter Social Network"
-                                        src=images/teercounterSocial.jpg title=teercounterSocial></a></div>
-                        </div>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=dream-numbers.php><img alt="Teer Dream Numbers"
-                                        src=images/teer-dream-numbers.jpg title="Dream Number"></a></div>
-                        </div>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=win-prizes.php.htm><img alt="TeerCounter Win Prizes"
-                                        src=images/teer-win-prizes.jpg title="Win Prizes"></a></div>
-                        </div>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=lotteries.html><img alt="TeerCounter Forum"
-                                        src=images/teer-forum.jpg title=Groups></a></div>
-                        </div>
-                        <div class="col-md-50 work-grid">
-                            <div class=item1><a href=common-numbers.php><img alt=" Teer Common Numbers"
-                                        src=images/teer-common-numbers.jpg title="Common Number"></a></div>
-                        </div>
+        <div class=work id=work>
+        <div>
+            <div class=container style=background-color:#fff>
+               
+                <div class=work style=background-color:#fff id=work>
+                    <div class=container style=background-color:#fff>
+                        <div class="head-one team-head text-center"></div>
                     </div>
                 </div>
-                <div class=footer-left1><a href=termsofuse.php><u>Terms</u></a></div>
-                <div class=footer-center1><a href=contact-us.php><u>Contact Us</u></a></div>
-                <div class=footer-right1><a href=privacypolicy.php><u>Privacy Policy</u></a></div>
+                <div class=container style=background-color:#fff id=work1>
+                    <div class=works>
+                        <div class="col-md-45 work-grid">
+                            <div class=item1><a href=common-numbers.php><img alt="Teer Common Numbers"
+                                        src=images/Common-Numbers.png title="Common Number"></a></div>
+                        </div>
+                        
+                        
+                        <div class="col-md-45 work-grid">
+                            <div class=item1><a href=previous-result.php><img alt="Teer Previous Results"
+                                        src=images/Previous-Result.png title="Previous Result"></a>
+                                <div class=caption style=display:none></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-45 work-grid">
+                            <div class=item1><a href=dream-numbers.php><img alt="Teer Previous Results"
+                                        src=images/Dream-Number.png title="Dream Number "></a>
+                                <div class=caption style=display:none></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class=clear></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+                <script src="js/my_script.js"></script>
                 </body>
 
                 </html>

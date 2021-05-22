@@ -1,12 +1,9 @@
 
 
-body {
-    background: #C5E1A5;
-  }
   form {
     width: 60%;
-    margin: 60px auto;
-    background: #efefef;
+    margin: 10px auto;
+    background: #C5E1A5 !important;
     padding: 60px 120px 80px 120px;
     text-align: center;
     -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
@@ -16,11 +13,12 @@ body {
     display: block;
     position: relative;
     margin: 40px 0px;
+    padding: 0 1em;
   }
   .label-txt {
     position: absolute;
-    top: -1.6em;
-    padding: 10px;
+    top: -3.2em;
+    padding: 1em 6px;
     font-family: sans-serif;
     font-size: .8em;
     letter-spacing: 1px;
@@ -72,6 +70,7 @@ body {
     border-radius: 3px;
     cursor: pointer;
     transition: ease .3s;
+    margin-top: 1em !important;
   }
   
   button:hover {
@@ -79,3 +78,15 @@ body {
     color: #ffffff;
   }
   
+
+  @media (max-width: 700px) {
+    form{
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    form{
+      padding: 1em 0;
+    }
+  }
