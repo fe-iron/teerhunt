@@ -3,7 +3,7 @@ include 'connection.php';
 
 $conn = OpenCon();
 
-$sql = "SELECT * FROM bhutan_teer ORDER BY id DESC LIMIT 1";
+$sql = "SELECT * FROM house_entry ORDER BY id DESC LIMIT 1";
 $marqu = "SELECT * FROM marquee ORDER BY id DESC LIMIT 1";
 $result = $conn->query($sql);
 $result1 = $conn->query($marqu);
@@ -60,7 +60,7 @@ $conn->close();
                 </div>
 
                 <div class="score-card">
-                    <p>0<?php echo $rows['F/R'] ?></p>
+                    <p><?php echo $rows['F/R'] ?></p>
                 </div>
             </div>
             <div class="timers">

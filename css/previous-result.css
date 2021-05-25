@@ -91,6 +91,9 @@ p.day-content:hover {
   .table {
     display: block;
   }
+  .table-content {
+    overflow: scroll;
+  }
 }
 
 .top-header {

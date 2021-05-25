@@ -26,21 +26,33 @@
         
         $result = " ";
         if($round == '1'){
-        $sql = "INSERT into `house_entry` (num, house_num, round_first, amount, city) 
-                    VALUES ('$num', '$house', 1, $amount, '$city')";
+            $sql = "INSERT into `house_entry` (house_num_fr, round_first, amount, city, `F/R`) 
+                        VALUES ('$house', 1, '$amount', '$city', '$num')";
         // $result = $con->query($sql);
         }else{
-            $sql = "INSERT into `house_entry` (num, house_num, round_second, amount, city) 
-                    VALUES ('$num', '$house', 1, $amount, '$city')";
-            // $result = $con->query($sql);
+            $sql = "SELECT * FROM `house_entry` WHERE `round_second`=0 ORDER BY `date` DESC";
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                $row = $result->fetch_assoc();
+                $this_id = $row['id'];
+            } else {
+                header("Location: result_out.php?result='First Set F/R round'");    
+            }
+
+            $sql = "UPDATE `house_entry` SET `S/R`='$num', house_num_sr='$house', round_second=1, city='$city', amount='$amount' WHERE id=$this_id";
+
+
         }
 
         if ($con->query($sql) === TRUE) {
-            // echo "New record created successfully";
-          } else {
-            header("Location: index.php?result='Fail'");
-          }
-        header("Location: admin.php?result='Success'");
+            header("Location: result_out.php?result=Successfully Set");
+        }else {
+            // echo "Error updating record: " . $con->error;
+            header("Location: result_out.php?result='Fail'");
+        }
+        
     }
     
     

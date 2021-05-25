@@ -9,6 +9,7 @@
     <meta name="keyword" content="teer,BHUTAN,Teer result,lottery result,dream numbers, dream meaning">
 
     <link href="css/style1.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./css/teer.css">
     <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -48,11 +49,17 @@
 
 <body>
     <!----- start-header---->
-    <div id="home" class="header">
-        <div class="top-header">
+    <header class="header">
+        <div class="header-content">
+        <div class="logo">
             <a href="index.php"><img src="./images/Lucky-Teer-Logo.png" alt=""></a>
         </div>
-    </div>
+        <div class="date">
+            <p id="date"></p>
+        </div>
+        </div>
+        
+    </header>
     <!---work--->
 
     <div class="btn-container">
@@ -555,6 +562,8 @@
             </div>
         </div>
     </div>
+
+    <script src="js/my_script.js"></script>
 </body>
 
 </html>
