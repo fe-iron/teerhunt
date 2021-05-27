@@ -7,6 +7,8 @@ $sql = "SELECT * FROM house_entry";
 
 $result = $conn->query($sql);
 
+$img = "SELECT * FROM images WHERE `page`='previous_result' LIMIT 6";
+$img = $conn->query($img);
 
 
 
@@ -140,6 +142,32 @@ $conn->close();
                     </div>
                 </div>
             </div>
+
+            <div id="work1" class="container" style="background-color:white;">
+                <!---works--->
+                <div class="works">
+                    <div id="whatever" style="padding: 1em 0;">
+
+                        <?php
+                        if ($img->num_rows > 0) {
+                            // output data of each row
+                            $text = '';
+                            while($row = $img->fetch_assoc()) {
+                                $text = $text . '<div class="col-md-50 work-grid">
+                                                <div class="item1"> 
+                                                    <a href="#">
+                                                        <img src="upload/'.$row["image_url"].'" title="Win Prizes" alt="TeerCounter Win Prizes" />
+                                                    </a> 
+                                                </div>
+                                                </div>';
+                            }
+                            echo $text;
+                        }
+                        ?>
+                        
+                    </div>
+                </div>
+
             <script src="js/my_script.js"></script>
             </body>
 

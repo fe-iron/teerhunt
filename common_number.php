@@ -146,6 +146,14 @@
                                 <span class="hide-menu">Common Number</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="upload_images.php"
+                                aria-expanded="false">
+                                <i class=" fas fa-upload" aria-hidden="true"></i>
+                                <span class="hide-menu">Upload Images</span>
+                            </a>
+                        </li>
+                        
                         <?php if($_SESSION['result_out']) : ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="result_out.php"

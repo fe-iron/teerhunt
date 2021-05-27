@@ -3,11 +3,37 @@
     include 'connection.php';
     include 'auth.php';
     $conn = OpenCon();
+    $msg = "";
 
-    if(empty($_GET)) {
-        $msg = " ";
-    }else{
-        $msg = $_GET['result'];
+    if(isset($_POST['s'])){
+        $name = $_FILES['img_file']['name'];
+        $page = $_POST['page'];
+        $target_dir = "upload/";
+        $target_file = $target_dir . basename($_FILES["img_file"]["name"]);
+      
+        // Select file type
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+      
+        // Valid file extensions
+        $extensions_arr = array("jpg","jpeg","png","gif");
+      
+        // Check extension
+        if( in_array($imageFileType,$extensions_arr) ){
+           // Upload file
+           if(move_uploaded_file($_FILES['img_file']['tmp_name'],$target_dir.$name)){
+              // Insert record
+              $query = "INSERT INTO images (image_url, page) values('".$name."', '$page')";
+              $result = mysqli_query($conn,$query);
+              if($result){
+                    $msg = "Uploaded Successfully!";
+               }else{
+                    $msg = "Image Saving Failed!";
+               }
+              
+           }
+      
+        }
+       
     }
 ?>
 
@@ -202,7 +228,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Image Upload page</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -237,92 +263,41 @@
                         <div class="card">
                             <div class="card-body">
                                 <?php 
-                                    if($msg == "Successfully Updated!"){
+                                    if($msg == "Uploaded Successfully!"){
                                         print '<h2 class="text-success" style="text-align: center">'.$msg.'</h2>';
                                     }else{
                                         print '<h2 class="text-danger" style="text-align: center">'.$msg.'</h2>';
                                     }
                                 ?>
-                                <form class="form-horizontal form-material" action="update_profile.php" method="post">
+                                <form class="form-horizontal form-material" action="" method="post" enctype="multipart/form-data"
+                                onSubmit="return validateImage();">
+                                    
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Full Name</label>
+                                        <label for="example-email" class="col-md-12 p-0">Upload Image</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Full Name" class="form-control p-0 border-0"
-                                                name="fullname">
+                                            <input type="file" class="form-control p-0 border-0"
+                                                name="img_file"  id="img_file">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label for="example-email" class="col-md-12 p-0">Email</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" value="<?php echo $_SESSION['email']; ?>" title="Not Changeable" class="form-control p-0 border-0"
-                                                name="email" id="example-email" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" value="Password" class="form-control p-0 border-0" name="password" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Phone No</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Mobile Number"
-                                                class="form-control p-0 border-0" name="phone">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-sm-12">Select State</label>
+                                        <label class="col-sm-12">Select Page</label>
 
                                         <div class="col-sm-12 border-bottom">
-                                            <select name="state" id="state"
+                                            <select name="page"
                                                 class="form-select shadow-none p-0 border-0 form-control-line">
                                                 <option value="">Select</option>
-                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
-                                                </option>
-                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                                <option value="Assam">Assam</option>
-                                                <option value="Bihar">Bihar</option>
-                                                <option value="Chandigarh">Chandigarh</option>
-                                                <option value="Chhattisgarh">Chhattisgarh</option>
-                                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                                <option value="Daman and Diu">Daman and Diu</option>
-                                                <option value="Delhi">Delhi</option>
-                                                <option value="Lakshadweep">Lakshadweep</option>
-                                                <option value="Puducherry">Puducherry</option>
-                                                <option value="Goa">Goa</option>
-                                                <option value="Gujarat">Gujarat</option>
-                                                <option value="Haryana">Haryana</option>
-                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                                <option value="Jharkhand">Jharkhand</option>
-                                                <option value="Karnataka">Karnataka</option>
-                                                <option value="Kerala">Kerala</option>
-                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                                <option value="Maharashtra">Maharashtra</option>
-                                                <option value="Manipur">Manipur</option>
-                                                <option value="Meghalaya">Meghalaya</option>
-                                                <option value="Mizoram">Mizoram</option>
-                                                <option value="Nagaland">Nagaland</option>
-                                                <option value="Odisha">Odisha</option>
-                                                <option value="Punjab">Punjab</option>
-                                                <option value="Rajasthan">Rajasthan</option>
-                                                <option value="Sikkim">Sikkim</option>
-                                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                                <option value="Telangana">Telangana</option>
-                                                <option value="Tripura">Tripura</option>
-                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                                <option value="Uttarakhand">Uttarakhand</option>
-                                                <option value="West Bengal">West Bengal</option>
+                                                <option value="common_number">Common Number</option>
+                                                <option value="previous_result">Previous Result</option>
+                                                <option value="dream_number">Dream Number</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success">Update Profile</button>
+                                            <button class="btn btn-success" value="Submit" name="s">Upload Images</button>
                                         </div>
                                     </div>
+                                    <p class="form-group mb-4 text-warning">DO NOT UPLOAD IMAGE OF SIZE MORE THAN 1MB AND IMAGES SHOULD BE IN SQUARE FORMAT</p>
                                 </form>
                             </div>
                         </div>
@@ -374,6 +349,7 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <script src="js/upload.js"></script>
 </body>
 
 </html>
