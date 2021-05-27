@@ -7,7 +7,7 @@ $sql = "SELECT * FROM house_entry";
 
 $result = $conn->query($sql);
 
-$img = "SELECT * FROM images WHERE `page`='previous_result' LIMIT 6";
+$img = "SELECT * FROM images WHERE `page`='previous_result'";
 $img = $conn->query($img);
 
 
@@ -18,9 +18,12 @@ $conn->close();
 <title>Teer | Super | Lucky Teer Online: </title>
 <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
 <meta content="width=device-width,initial-scale=1,maximum-scale=1" name=viewport>
-<meta content="Check out previous results for BHUTAN teer at teerbhutan.com" name=description>
-<meta content="teer,BHUTAN,teer result,lottery result,previous results" name=keyword>
+<meta name="title" content="lucky teer, previous result">
+<meta name="description" content="Check out previous result in lucky teer, result at luckyteer.online">
+<meta name="keyword" content="luckyteeronline, lucky teer online, dream numbers, online, common numbers, previous result, lucky teer online today">
+
 <link href=css/style1.css rel=stylesheet media=all>
+<link rel="stylesheet" href="./css/teer.css">
 <link href=images/16.ico rel="shortcut icon" type=image/x-icon>
 <!-- <link rel="stylesheet" href="css/previous-result.css"> -->
 
@@ -132,8 +135,8 @@ $conn->close();
                                         <div class=caption style=display:none></div>
                                     </div>
                                 </div>
+                                
                             </div>
-
 
                             <div class=clear></div>
                         </div>
@@ -143,31 +146,46 @@ $conn->close();
                 </div>
             </div>
 
-            <div id="work1" class="container" style="background-color:white;">
-                <!---works--->
-                <div class="works">
-                    <div id="whatever" style="padding: 1em 0;">
 
-                        <?php
-                        if ($img->num_rows > 0) {
-                            // output data of each row
-                            $text = '';
-                            while($row = $img->fetch_assoc()) {
-                                $text = $text . '<div class="col-md-50 work-grid">
-                                                <div class="item1"> 
-                                                    <a href="#">
-                                                        <img src="upload/'.$row["image_url"].'" title="Win Prizes" alt="TeerCounter Win Prizes" />
-                                                    </a> 
-                                                </div>
-                                                </div>';
-                            }
-                            echo $text;
-                        }
-                        ?>
-                        
+
+            <div class=work id=work>
+                <div>
+                    <div class=container style=background-color:#fff>
+
+                        <div class=work style=background-color:#fff id=work>
+                            <div class=container style=background-color:#fff>
+                                <div class="head-one team-head text-center"></div>
+                            </div>
+                        </div>
+                        <div class=container style=background-color:#fff id=work1>
+                            <div class=works>
+                                
+                                <?php
+                                    if ($img->num_rows > 0) {
+                                        // output data of each row
+                                        $text = '';
+                                        while($row = $img->fetch_assoc()) {
+                                            $text = $text . '<div class="col-md-45 work-grid">
+                                                            <div class="item1"> 
+                                                                    <img src="upload/'.$row["image_url"].'" title="Win Prizes" alt="Lucky Teer" />
+                                                                    <div class=caption style=display:none></div>
+                                                            </div>
+                                                            </div>';
+                                        }
+                                        echo $text;
+                                    }
+                                ?>
+                            </div>
+
+                            <div class=clear></div>
+                        </div>
+
+
                     </div>
                 </div>
+            </div>
 
+            
             <script src="js/my_script.js"></script>
             </body>
 
